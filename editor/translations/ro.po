@@ -1482,6 +1482,10 @@ msgstr "Nume"
 msgid "Singleton"
 msgstr "Singleton (Unicat)"
 
+#: editor/editor_data.cpp editor/inspector_dock.cpp
+msgid "Paste Params"
+msgstr "Lipiţi Parametrii"
+
 #: editor/editor_data.cpp
 msgid "Updating Scene"
 msgstr "Scena se Actualizează"
@@ -1758,7 +1762,7 @@ msgstr "Arătați în Administratorul de Fișiere"
 msgid "New Folder..."
 msgstr "Director Nou..."
 
-#: editor/editor_file_dialog.cpp
+#: editor/editor_file_dialog.cpp editor/find_in_files.cpp
 #: editor/plugins/version_control_editor_plugin.cpp
 msgid "Refresh"
 msgstr "Reîmprospătați"
@@ -3996,16 +4000,17 @@ msgid "Saving..."
 msgstr "Se Salvează..."
 
 #: editor/import_dock.cpp
+#, fuzzy
+msgid "%d Files"
+msgstr " Fișiere"
+
+#: editor/import_dock.cpp
 msgid "Set as Default for '%s'"
 msgstr "Setează ca Implicit pentru '%s'"
 
 #: editor/import_dock.cpp
 msgid "Clear Default for '%s'"
 msgstr "Curăță setarea Implicită pentru '%s'"
-
-#: editor/import_dock.cpp
-msgid " Files"
-msgstr " Fișiere"
 
 #: editor/import_dock.cpp
 msgid "Import As:"
@@ -4056,10 +4061,6 @@ msgstr "Salvează Ca..."
 #: editor/inspector_dock.cpp
 msgid "Copy Params"
 msgstr "Copie Parametrii"
-
-#: editor/inspector_dock.cpp
-msgid "Paste Params"
-msgstr "Lipiţi Parametrii"
 
 #: editor/inspector_dock.cpp
 #, fuzzy
@@ -6111,7 +6112,7 @@ msgstr ""
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 #, fuzzy
-msgid "Create Single Convex Collision Siblings"
+msgid "Create Single Convex Collision Sibling"
 msgstr "Creează un Frate de Coliziune Convex"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
@@ -12527,6 +12528,11 @@ msgstr ""
 msgid ""
 "Plane shapes don't work well and will be removed in future versions. Please "
 "don't use them."
+msgstr ""
+
+#: scene/3d/collision_shape.cpp
+msgid ""
+"ConcavePolygonShape doesn't support RigidBody in another mode than static."
 msgstr ""
 
 #: scene/3d/cpu_particles.cpp

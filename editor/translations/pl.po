@@ -42,7 +42,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Godot Engine editor\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2020-01-27 07:10+0000\n"
+"PO-Revision-Date: 2020-03-16 09:43+0000\n"
 "Last-Translator: Tomek <kobewi4e@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/godot-engine/"
 "godot/pl/>\n"
@@ -52,7 +52,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.11-dev\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #: core/math/expression.cpp modules/gdscript/gdscript_functions.cpp
 #: modules/visual_script/visual_script_builtin_funcs.cpp
@@ -706,7 +706,7 @@ msgstr "Zmień rozmiar Tablicy"
 
 #: editor/array_property_edit.cpp
 msgid "Change Array Value Type"
-msgstr "Zmień Typ Tablicy"
+msgstr "Zmień typ wartości tablicy"
 
 #: editor/array_property_edit.cpp
 msgid "Change Array Value"
@@ -721,9 +721,8 @@ msgid "Line Number:"
 msgstr "Numer linii:"
 
 #: editor/code_editor.cpp
-#, fuzzy
 msgid "%d replaced."
-msgstr "Zamień..."
+msgstr "%d zamieniono."
 
 #: editor/code_editor.cpp editor/editor_help.cpp
 msgid "%d match."
@@ -1520,6 +1519,10 @@ msgstr "Nazwa"
 msgid "Singleton"
 msgstr "Singleton"
 
+#: editor/editor_data.cpp editor/inspector_dock.cpp
+msgid "Paste Params"
+msgstr "Wklej parametry"
+
 #: editor/editor_data.cpp
 msgid "Updating Scene"
 msgstr "Aktualizowanie Sceny"
@@ -1805,7 +1808,7 @@ msgstr "Pokaż w menedżerze plików"
 msgid "New Folder..."
 msgstr "Utwórz katalog..."
 
-#: editor/editor_file_dialog.cpp
+#: editor/editor_file_dialog.cpp editor/find_in_files.cpp
 #: editor/plugins/version_control_editor_plugin.cpp
 msgid "Refresh"
 msgstr "Odśwież"
@@ -3981,16 +3984,16 @@ msgid "Saving..."
 msgstr "Zapisywanie..."
 
 #: editor/import_dock.cpp
+msgid "%d Files"
+msgstr "%d plików"
+
+#: editor/import_dock.cpp
 msgid "Set as Default for '%s'"
 msgstr "Ustaw jako domyślne dla \"%s\""
 
 #: editor/import_dock.cpp
 msgid "Clear Default for '%s'"
 msgstr "Usuń domyślne dla \"%s\""
-
-#: editor/import_dock.cpp
-msgid " Files"
-msgstr " Pliki"
 
 #: editor/import_dock.cpp
 msgid "Import As:"
@@ -4039,10 +4042,6 @@ msgstr "Zapisz jako..."
 #: editor/inspector_dock.cpp
 msgid "Copy Params"
 msgstr "Kopiuj parametry"
-
-#: editor/inspector_dock.cpp
-msgid "Paste Params"
-msgstr "Wklej parametry"
 
 #: editor/inspector_dock.cpp
 msgid "Edit Resource Clipboard"
@@ -5869,9 +5868,8 @@ msgid "Mesh is empty!"
 msgstr "Siatka jest pusta!"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Couldn't create a Trimesh collision shape."
-msgstr "Utwórz sąsiadującą trójsiatkę kolizji"
+msgstr "Nie udało się utworzyć kształtu trójsiatki."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Create Static Trimesh Body"
@@ -5888,29 +5886,29 @@ msgstr "Utwórz statyczny kształt trójsiatki"
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Can't create a single convex collision shape for the scene root."
 msgstr ""
+"Nie można utworzyć pojedynczego wypukłego kształtu kolizji dla korzenia "
+"sceny."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Couldn't create a single convex collision shape."
-msgstr ""
+msgstr "Nie udało się utworzyć pojedynczego wypukłego kształtu kolizji."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Create Single Convex Shape"
-msgstr "Utwórz kształt wypukły"
+msgstr "Utwórz pojedynczy wypukły kształt"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Can't create multiple convex collision shapes for the scene root."
 msgstr ""
+"Nie można utworzyć wielu wypukłych kształtów kolizji dla korzenia sceny."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Couldn't create any collision shapes."
-msgstr "Nie można utworzyć katalogu."
+msgstr "Nie udało się utworzyć żadnego kształtu kolizji."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Create Multiple Convex Shapes"
-msgstr "Utwórz kształt wypukły"
+msgstr "Utwórz wiele wypukłych kształtów"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Create Navigation Mesh"
@@ -5966,6 +5964,9 @@ msgid ""
 "automatically.\n"
 "This is the most accurate (but slowest) option for collision detection."
 msgstr ""
+"Tworzy węzeł StaticBody i automatycznie przypisuje mu kształt kolizji oparty "
+"na wielokątach.\n"
+"To jest najdokładniejsza (ale najwolniejsza) opcja do detekcji kolizji."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Create Trimesh Collision Sibling"
@@ -5976,28 +5977,32 @@ msgid ""
 "Creates a polygon-based collision shape.\n"
 "This is the most accurate (but slowest) option for collision detection."
 msgstr ""
+"Tworzy kształt kolizji oparty na wielokątach.\n"
+"To jest najdokładniejsza (ale najwolniejsza) opcja do detekcji kolizji."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
-msgid "Create Single Convex Collision Siblings"
-msgstr "Utwórz wypukłego sąsiada kolizji"
+msgid "Create Single Convex Collision Sibling"
+msgstr "Utwórz pojedynczego wypukłego sąsiada kolizji"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid ""
 "Creates a single convex collision shape.\n"
 "This is the fastest (but least accurate) option for collision detection."
 msgstr ""
+"Tworzy pojedynczy wypukły kształt kolizji.\n"
+"To jest najszybsza (ale najmniej dokładna) opcja dla detekcji kolizji."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Create Multiple Convex Collision Siblings"
-msgstr "Utwórz wypukłego sąsiada kolizji"
+msgstr "Utwórz wiele wypukłych sąsiadów kolizji"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid ""
 "Creates a polygon-based collision shape.\n"
 "This is a performance middle-ground between the two above options."
 msgstr ""
+"Tworzy kształt kolizji oparty o wielokąty.\n"
+"To jest złoty środek względem wydajności powyższych dwóch opcji."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Create Outline Mesh..."
@@ -6010,6 +6015,10 @@ msgid ""
 "This can be used instead of the SpatialMaterial Grow property when using "
 "that property isn't possible."
 msgstr ""
+"Tworzy statyczną siatkę obwódki. Siatka obwódki ma automatycznie odwrócone "
+"normalne.\n"
+"To może zostać użyte zamiast właściwości Grow w SpatialMaterial kiedy "
+"używanie tej właściwości jest niemożliwe."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "View UV1"
@@ -9586,35 +9595,30 @@ msgid "Export With Debug"
 msgstr "Eksport z debugowaniem"
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid "The path specified doesn't exist."
-msgstr "Ścieżka nie istnieje."
+msgstr "Podana ścieżka nie istnieje."
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid "Error opening package file (it's not in ZIP format)."
-msgstr "Błąd otwierania pliku pakietu, nie jest w formacie ZIP."
+msgstr "Błąd otwierania pliku pakietu (nie jest w formacie ZIP)."
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid ""
 "Invalid \".zip\" project file; it doesn't contain a \"project.godot\" file."
 msgstr ""
-"Niewłaściwy projekt pliku \".zip\", nie zawiera pliku \"project.godot\"."
+"Niewłaściwy plik \".zip\" projektu; nie zawiera pliku \"project.godot\"."
 
 #: editor/project_manager.cpp
 msgid "Please choose an empty folder."
 msgstr "Proszę wybrać pusty folder."
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid "Please choose a \"project.godot\" or \".zip\" file."
 msgstr "Proszę wybrać plik \"project.godot\" lub \".zip\"."
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid "This directory already contains a Godot project."
-msgstr "Folder już zawiera projekt Godota."
+msgstr "Ten folder już zawiera projekt Godota."
 
 #: editor/project_manager.cpp
 msgid "New Game Project"
@@ -10312,9 +10316,8 @@ msgid "Suffix"
 msgstr "Przyrostek"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "Use Regular Expressions"
-msgstr "Wyrażenia regularne"
+msgstr "Użyj wyrażeń regularnych"
 
 #: editor/rename_dialog.cpp
 msgid "Advanced Options"
@@ -10353,9 +10356,8 @@ msgstr ""
 "Porównaj opcje licznika."
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "Per-level Counter"
-msgstr "Poziomowy licznik"
+msgstr "Oddzielny licznik na poziom"
 
 #: editor/rename_dialog.cpp
 msgid "If set the counter restarts for each group of child nodes"
@@ -10394,14 +10396,12 @@ msgid "Keep"
 msgstr "Bez zmian"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "PascalCase to snake_case"
-msgstr "CamelCase na under_scored"
+msgstr "PascalCase na snake_case"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "snake_case to PascalCase"
-msgstr "under_scored na CamelCase"
+msgstr "snake_case na PascalCase"
 
 #: editor/rename_dialog.cpp
 msgid "Case"
@@ -10420,14 +10420,12 @@ msgid "Reset"
 msgstr "Resetuj"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "Regular Expression Error"
-msgstr "Wyrażenia regularne"
+msgstr "Błąd wyrażenia regularnego"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "At character %s"
-msgstr "Dopuszczalne znaki:"
+msgstr "Przy znaku %s"
 
 #: editor/reparent_dialog.cpp editor/scene_tree_dock.cpp
 msgid "Reparent Node"
@@ -10892,9 +10890,8 @@ msgid "Invalid inherited parent name or path."
 msgstr "Nieprawidłowa nazwa lub ścieżka klasy bazowej."
 
 #: editor/script_create_dialog.cpp
-#, fuzzy
 msgid "Script path/name is valid."
-msgstr "Skrypt jest prawidłowy."
+msgstr "Ścieżka/nazwa skryptu jest prawidłowa."
 
 #: editor/script_create_dialog.cpp
 msgid "Allowed: a-z, A-Z, 0-9, _ and ."
@@ -10985,9 +10982,8 @@ msgid "Copy Error"
 msgstr "Kopiuj błąd"
 
 #: editor/script_editor_debugger.cpp
-#, fuzzy
 msgid "Video RAM"
-msgstr "Pamięć wideo"
+msgstr "Wideo RAM"
 
 #: editor/script_editor_debugger.cpp
 msgid "Skip Breakpoints"
@@ -12398,6 +12394,13 @@ msgid ""
 msgstr ""
 "Kształty płaszczyzny nie działają dobrze i zostaną usunięte w przyszłych "
 "wersjach. Nie używaj ich."
+
+#: scene/3d/collision_shape.cpp
+msgid ""
+"ConcavePolygonShape doesn't support RigidBody in another mode than static."
+msgstr ""
+"ConcavePolygonShape nie obsługuje węzła RigidBody w innym trybie niż "
+"statyczny."
 
 #: scene/3d/cpu_particles.cpp
 msgid "Nothing is visible because no mesh has been assigned."

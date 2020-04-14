@@ -48,12 +48,12 @@
 # joel silva <joelgbsilva@gmail.com>, 2019.
 # Heitor Novais Pereira <heitornovais394@outlook.com>, 2019.
 # Joel Landgraf Filho <joel.landgraf@gmail.com>, 2019.
-# Alan Valmorbida <alanvalmorbida@gmail.com>, 2019.
+# Alan Valmorbida <alanvalmorbida@gmail.com>, 2019, 2020.
 # João Vitor Ferreira Cavalcante <jvfecav@gmail.com>, 2019.
 # Thiago Amendola <amendolathiago@gmail.com>, 2019.
 # Raphael Nogueira Campos <raphaelncampos@gmail.com>, 2019.
 # Dimenicius <vinicius.costa.92@gmail.com>, 2019.
-# Davi <wokep.ma.wavid@gmail.com>, 2019.
+# Davi <wokep.ma.wavid@gmail.com>, 2019, 2020.
 # Endrick Gustavo <endrickgb@hotmail.com>, 2019.
 # Hans M. Boron <hansmateusboron@gmail.com>, 2019.
 # Gustavo Bolanho <jdmapas@gmail.com>, 2019.
@@ -61,7 +61,7 @@
 # Ivo Nascimento <iannsp@gmail.com>, 2019.
 # Klaus Dellano <klausdell@hotmail.com>, 2019.
 # Esdras Tarsis <esdrastarsis@gmail.com>, 2019.
-# Douglas Fiedler <dognew@gmail.com>, 2019.
+# Douglas Fiedler <dognew@gmail.com>, 2019, 2020.
 # Rarysson Guilherme <r_guilherme12@hotmail.com>, 2019.
 # Gustavo da Silva Santos <gustavo94.rb@gmail.com>, 2019.
 # Rafael Roque <rafael.roquec@gmail.com>, 2019.
@@ -82,12 +82,14 @@
 # Michael Leocádio <aeronmike@gmail.com>, 2020.
 # Z <rainromes@gmail.com>, 2020.
 # Leonardo Dimano <leodimano@live.com>, 2020.
+# anonymous <noreply@weblate.org>, 2020.
+# Guilherme Souza Reis de Melo Lopes <gsrmlopes@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: Godot Engine editor\n"
 "POT-Creation-Date: 2016-05-30\n"
-"PO-Revision-Date: 2020-02-06 09:45+0000\n"
-"Last-Translator: Leonardo Dimano <leodimano@live.com>\n"
+"PO-Revision-Date: 2020-03-08 22:32+0000\n"
+"Last-Translator: Guilherme Souza Reis de Melo Lopes <gsrmlopes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "godot-engine/godot/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -95,7 +97,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.11-dev\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #: core/math/expression.cpp modules/gdscript/gdscript_functions.cpp
 #: modules/visual_script/visual_script_builtin_funcs.cpp
@@ -118,7 +120,7 @@ msgstr "Entrada inválida %i (não passou) na expressão"
 
 #: core/math/expression.cpp
 msgid "self can't be used because instance is null (not passed)"
-msgstr "self não pode ser usado porque a instancia é nula (não passou)"
+msgstr "self não pode ser usado porque a instância é nula (não passou)"
 
 #: core/math/expression.cpp
 msgid "Invalid operands to operator %s, %s and %s."
@@ -134,7 +136,7 @@ msgstr "Nome inválido de índice '%s' para base tipo %s"
 
 #: core/math/expression.cpp
 msgid "Invalid arguments to construct '%s'"
-msgstr "Argumento inválido do tipo '%s'"
+msgstr "Argumento inválido para construir '%s'"
 
 #: core/math/expression.cpp
 msgid "On call to '%s':"
@@ -242,11 +244,11 @@ msgstr "Alterar Tempo de Quadro-Chave da Anim Multi"
 
 #: editor/animation_track_editor.cpp
 msgid "Anim Multi Change Transition"
-msgstr "Transição de Animação com Múltiplas Mudanças"
+msgstr "Alterar Transição da Animação"
 
 #: editor/animation_track_editor.cpp
 msgid "Anim Multi Change Transform"
-msgstr "Transformação de Animação com Múltiplas Mudanças"
+msgstr "Alterar Transformação da Anim"
 
 #: editor/animation_track_editor.cpp
 msgid "Anim Multi Change Keyframe Value"
@@ -299,7 +301,7 @@ msgstr "Duração da Animação (em segundos)"
 
 #: editor/animation_track_editor.cpp
 msgid "Add Track"
-msgstr "Adicionar Trilha"
+msgstr "Adicionar Faixa"
 
 #: editor/animation_track_editor.cpp
 msgid "Animation Looping"
@@ -324,7 +326,7 @@ msgstr "Alterar Valor do Trajeto"
 
 #: editor/animation_track_editor.cpp
 msgid "Toggle this track on/off."
-msgstr "Ligar/desligar esta trilha."
+msgstr "Ligar/desligar esta faixa."
 
 #: editor/animation_track_editor.cpp
 msgid "Update Mode (How this property is set)"
@@ -340,7 +342,7 @@ msgstr "Modo Loop Enrolado (Interpolar fim com início no loop)"
 
 #: editor/animation_track_editor.cpp
 msgid "Remove this track."
-msgstr "Remover esta trilha."
+msgstr "Remover esta faixa."
 
 #: editor/animation_track_editor.cpp
 msgid "Time (s): "
@@ -348,7 +350,7 @@ msgstr "Tempo (s): "
 
 #: editor/animation_track_editor.cpp
 msgid "Toggle Track Enabled"
-msgstr "Habilitar Trilha"
+msgstr "Habilitar Faixa"
 
 #: editor/animation_track_editor.cpp
 msgid "Continuous"
@@ -418,11 +420,11 @@ msgstr "Remover Trilha da Anim"
 
 #: editor/animation_track_editor.cpp
 msgid "Create NEW track for %s and insert key?"
-msgstr "Criar NOVA trilha para %s e inserir chave?"
+msgstr "Criar NOVA faixa para %s e inserir chave?"
 
 #: editor/animation_track_editor.cpp
 msgid "Create %d NEW tracks and insert keys?"
-msgstr "Criar %d NOVAS trilhas e inserir chaves?"
+msgstr "Criar %d NOVAS faixas e inserir chaves?"
 
 #: editor/animation_track_editor.cpp editor/create_dialog.cpp
 #: editor/editor_audio_buses.cpp editor/editor_feature_profile.cpp
@@ -462,7 +464,7 @@ msgstr "Alterar FPS da Animação"
 
 #: editor/animation_track_editor.cpp
 msgid "Rearrange Tracks"
-msgstr "Reordenar Trilhas"
+msgstr "Reordenar Faixas"
 
 #: editor/animation_track_editor.cpp
 msgid "Transform tracks only apply to Spatial-based nodes."
@@ -504,11 +506,11 @@ msgstr "Adicionar Trilha Bezier"
 
 #: editor/animation_track_editor.cpp
 msgid "Track path is invalid, so can't add a key."
-msgstr "Caminho da trilha é inválido,então não pode adicionar uma chave."
+msgstr "Caminho da faixa é inválido, então não pode adicionar uma chave."
 
 #: editor/animation_track_editor.cpp
 msgid "Track is not of type Spatial, can't insert key"
-msgstr "Trilha não é do tipo Espacial,não pode inserir chave"
+msgstr "Faixa não é do tipo Espacial, não pode inserir chave"
 
 #: editor/animation_track_editor.cpp
 msgid "Add Transform Track Key"
@@ -732,11 +734,11 @@ msgstr "Selecionar Todos/Nenhum"
 
 #: editor/animation_track_editor_plugins.cpp
 msgid "Add Audio Track Clip"
-msgstr "Adicionar Clipe de Trilha de Áudio"
+msgstr "Adicionar Amostra de uma Trilha de Áudio"
 
 #: editor/animation_track_editor_plugins.cpp
 msgid "Change Audio Track Clip Start Offset"
-msgstr "Alterar Offset de Início do Clipe da Trilha de Áudio"
+msgstr "Mudar Deslocamento de Início da Amostra da Trilha de Áudio"
 
 #: editor/animation_track_editor_plugins.cpp
 msgid "Change Audio Track Clip End Offset"
@@ -763,9 +765,8 @@ msgid "Line Number:"
 msgstr "Número da Linha:"
 
 #: editor/code_editor.cpp
-#, fuzzy
 msgid "%d replaced."
-msgstr "Substituir..."
+msgstr "%d substituído."
 
 #: editor/code_editor.cpp editor/editor_help.cpp
 msgid "%d match."
@@ -1442,7 +1443,7 @@ msgstr "Adicionar Canal"
 
 #: editor/editor_audio_buses.cpp
 msgid "Add a new Audio Bus to this layout."
-msgstr "Adicionar novo Canal de Áudio a este layout."
+msgstr "Adicionar um novo Canal de Áudio a este layout."
 
 #: editor/editor_audio_buses.cpp editor/editor_properties.cpp
 #: editor/plugins/animation_player_editor_plugin.cpp editor/property_editor.cpp
@@ -1562,6 +1563,10 @@ msgstr "Nome"
 #: editor/editor_autoload_settings.cpp
 msgid "Singleton"
 msgstr "Singleton"
+
+#: editor/editor_data.cpp editor/inspector_dock.cpp
+msgid "Paste Params"
+msgstr "Colar Parâmetros"
 
 #: editor/editor_data.cpp
 msgid "Updating Scene"
@@ -1848,7 +1853,7 @@ msgstr "Mostrar no Gerenciador de Arquivos"
 msgid "New Folder..."
 msgstr "Nova Pasta..."
 
-#: editor/editor_file_dialog.cpp
+#: editor/editor_file_dialog.cpp editor/find_in_files.cpp
 #: editor/plugins/version_control_editor_plugin.cpp
 msgid "Refresh"
 msgstr "Atualizar"
@@ -4036,16 +4041,16 @@ msgid "Saving..."
 msgstr "Salvando..."
 
 #: editor/import_dock.cpp
+msgid "%d Files"
+msgstr "%d Arquivos"
+
+#: editor/import_dock.cpp
 msgid "Set as Default for '%s'"
 msgstr "Definir como Padrão para '%s'"
 
 #: editor/import_dock.cpp
 msgid "Clear Default for '%s'"
 msgstr "Limpar Padrão para '%s'"
-
-#: editor/import_dock.cpp
-msgid " Files"
-msgstr " Arquivos"
 
 #: editor/import_dock.cpp
 msgid "Import As:"
@@ -4095,10 +4100,6 @@ msgstr "Salvar Como..."
 #: editor/inspector_dock.cpp
 msgid "Copy Params"
 msgstr "Copiar Parâmetros"
-
-#: editor/inspector_dock.cpp
-msgid "Paste Params"
-msgstr "Colar Parâmetros"
 
 #: editor/inspector_dock.cpp
 msgid "Edit Resource Clipboard"
@@ -5927,9 +5928,8 @@ msgid "Mesh is empty!"
 msgstr "Mesh está vazia!"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Couldn't create a Trimesh collision shape."
-msgstr "Criar Colisão Trimesh Irmã"
+msgstr "Não foi possível criar uma forma de colisão Trimesh."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Create Static Trimesh Body"
@@ -5945,30 +5945,27 @@ msgstr "Criar Forma Estática Trimesh"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Can't create a single convex collision shape for the scene root."
-msgstr ""
+msgstr "Não foi possível criar forma de colisão convexa para a cena raiz."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Couldn't create a single convex collision shape."
-msgstr ""
+msgstr "Não foi possível criar uma forma de colisão convexa simples."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Create Single Convex Shape"
-msgstr "Criar Forma(s) Convexa(s)"
+msgstr "Criar Forma(s) Convexa(s) Simples"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Can't create multiple convex collision shapes for the scene root."
-msgstr ""
+msgstr "Não foi possível criar uma forma de colisão convexa para a cena raiz."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Couldn't create any collision shapes."
-msgstr "Impossível criar a pasta."
+msgstr "Não foi possível criar nenhuma forma de colisão."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Create Multiple Convex Shapes"
-msgstr "Criar Forma(s) Convexa(s)"
+msgstr "Criar Múltiplas Forma(s) Convexa(s)"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Create Navigation Mesh"
@@ -6024,6 +6021,9 @@ msgid ""
 "automatically.\n"
 "This is the most accurate (but slowest) option for collision detection."
 msgstr ""
+"Criar um Staticbody e atribuir uma forma de colisão baseado em polígono para "
+"isto automaticamente.\n"
+"Esta é a opção mais precisa (mas lenta) para detecção de colisão."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Create Trimesh Collision Sibling"
@@ -6034,28 +6034,33 @@ msgid ""
 "Creates a polygon-based collision shape.\n"
 "This is the most accurate (but slowest) option for collision detection."
 msgstr ""
+"Criar uma forma de colisão baseada em polígono.\n"
+"Este é a opção mais precisa (mas lenta) para detecção de colisão."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 #, fuzzy
-msgid "Create Single Convex Collision Siblings"
-msgstr "Criar Colisão Convexa Irmã(s)"
+msgid "Create Single Convex Collision Sibling"
+msgstr "Criar Simples Colisão Convexa Irmã(s)"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid ""
 "Creates a single convex collision shape.\n"
 "This is the fastest (but least accurate) option for collision detection."
 msgstr ""
+"Criar uma simples forma convexa de colisão.\n"
+"Esta é a opção mais rápida (mas menos precisa) para detecção de colisão."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Create Multiple Convex Collision Siblings"
-msgstr "Criar Colisão Convexa Irmã(s)"
+msgstr "Criar Múltipla Colisão Convexa Irmã(s)"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid ""
 "Creates a polygon-based collision shape.\n"
 "This is a performance middle-ground between the two above options."
 msgstr ""
+"Cria um polígono base de colisão forma.\n"
+"Este é um meio-termo entre as duas opções acima."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Create Outline Mesh..."
@@ -6068,6 +6073,10 @@ msgid ""
 "This can be used instead of the SpatialMaterial Grow property when using "
 "that property isn't possible."
 msgstr ""
+"Cria uma malha de contorno estática. A malha de contorno pode ter suas "
+"normals viradas automaticamente.\n"
+"Isso pode ser usado em vez da propriedade SpatialMaterial Grow quando o uso "
+"dessa propriedade não for possível."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "View UV1"
@@ -9645,33 +9654,27 @@ msgid "Export With Debug"
 msgstr "Exportar Com Depuração"
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid "The path specified doesn't exist."
-msgstr "O caminho não existe."
+msgstr "O caminho especificado não existe."
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid "Error opening package file (it's not in ZIP format)."
-msgstr "Erro ao abrir arquivo compactado, não está no formato ZIP."
+msgstr "Erro ao abrir arquivo compactado (não está em formato ZIP)."
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid ""
 "Invalid \".zip\" project file; it doesn't contain a \"project.godot\" file."
-msgstr ""
-"Projeto '.zip' inválido, o projeto não contém um arquivo 'project.godot'."
+msgstr "Projeto '.zip' inválido; não contém um arquivo 'project.godot'."
 
 #: editor/project_manager.cpp
 msgid "Please choose an empty folder."
 msgstr "Por favor, escolha uma pasta vazia."
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid "Please choose a \"project.godot\" or \".zip\" file."
-msgstr "Por favor, escolha um arquivo 'project.godot' ou '.zip'."
+msgstr "Por favor, escolha um arquivo 'project.godot' ou arquivo '.zip'."
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid "This directory already contains a Godot project."
 msgstr "O diretório já contém um projeto Godot."
 
@@ -10371,9 +10374,8 @@ msgid "Suffix"
 msgstr "Sufixo"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "Use Regular Expressions"
-msgstr "Expressões regulares"
+msgstr "Utilize Expressões Regulares"
 
 #: editor/rename_dialog.cpp
 msgid "Advanced Options"
@@ -10412,7 +10414,6 @@ msgstr ""
 "Compare as opções do contador."
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "Per-level Counter"
 msgstr "Contador de nível"
 
@@ -10453,14 +10454,12 @@ msgid "Keep"
 msgstr "Manter"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "PascalCase to snake_case"
-msgstr "CamelCase para under_scored"
+msgstr "PascalCase para snake_case"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "snake_case to PascalCase"
-msgstr "under_scored para CamelCase"
+msgstr "snake_case para PascalCase"
 
 #: editor/rename_dialog.cpp
 msgid "Case"
@@ -10479,14 +10478,12 @@ msgid "Reset"
 msgstr "Recompor"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "Regular Expression Error"
-msgstr "Expressões regulares"
+msgstr "Erro de Expressão Regular"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "At character %s"
-msgstr "Caracteres válidos:"
+msgstr "Para caractere %s"
 
 #: editor/reparent_dialog.cpp editor/scene_tree_dock.cpp
 msgid "Reparent Node"
@@ -10951,9 +10948,8 @@ msgid "Invalid inherited parent name or path."
 msgstr "Nome ou caminho do pai herdado inválido."
 
 #: editor/script_create_dialog.cpp
-#, fuzzy
 msgid "Script path/name is valid."
-msgstr "Script válido."
+msgstr "O caminho/nome do script é válido."
 
 #: editor/script_create_dialog.cpp
 msgid "Allowed: a-z, A-Z, 0-9, _ and ."
@@ -11044,9 +11040,8 @@ msgid "Copy Error"
 msgstr "Copiar Erro"
 
 #: editor/script_editor_debugger.cpp
-#, fuzzy
 msgid "Video RAM"
-msgstr "Mem. de Vídeo"
+msgstr "Memória de Vídeo"
 
 #: editor/script_editor_debugger.cpp
 msgid "Skip Breakpoints"
@@ -12454,6 +12449,11 @@ msgid ""
 msgstr ""
 "Formas planas não funcionam bem e serão removidas em versões futuras. Por "
 "favor não as use."
+
+#: scene/3d/collision_shape.cpp
+msgid ""
+"ConcavePolygonShape doesn't support RigidBody in another mode than static."
+msgstr ""
 
 #: scene/3d/cpu_particles.cpp
 msgid "Nothing is visible because no mesh has been assigned."

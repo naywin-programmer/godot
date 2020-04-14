@@ -60,7 +60,6 @@ enum PropertyHint {
 	PROPERTY_HINT_ENUM, ///< hint_text= "val1,val2,val3,etc"
 	PROPERTY_HINT_EXP_EASING, /// exponential easing function (Math::ease) use "attenuation" hint string to revert (flip h), "full" to also include in/out. (ie: "attenuation,inout")
 	PROPERTY_HINT_LENGTH, ///< hint_text= "length" (as integer)
-	PROPERTY_HINT_SPRITE_FRAME, // FIXME: Obsolete: drop whenever we can break compat. Keeping now for GDNative compat.
 	PROPERTY_HINT_KEY_ACCEL, ///< hint_text= "length" (as integer)
 	PROPERTY_HINT_FLAGS, ///< hint_text= "flag1,flag2,etc" (as bit flags)
 	PROPERTY_HINT_LAYERS_2D_RENDER,
@@ -107,10 +106,7 @@ enum PropertyUsageFlags {
 	PROPERTY_USAGE_INTERNATIONALIZED = 64, //hint for internationalized strings
 	PROPERTY_USAGE_GROUP = 128, //used for grouping props in the editor
 	PROPERTY_USAGE_CATEGORY = 256,
-	// FIXME: Drop in 4.0, possibly reorder other flags?
-	// Those below are deprecated thanks to ClassDB's now class value cache
-	//PROPERTY_USAGE_STORE_IF_NONZERO = 512, //only store if nonzero
-	//PROPERTY_USAGE_STORE_IF_NONONE = 1024, //only store if false
+	PROPERTY_USAGE_SUBGROUP = 512,
 	PROPERTY_USAGE_NO_INSTANCE_STATE = 2048,
 	PROPERTY_USAGE_RESTART_IF_CHANGED = 4096,
 	PROPERTY_USAGE_SCRIPT_VARIABLE = 8192,
@@ -126,6 +122,7 @@ enum PropertyUsageFlags {
 	PROPERTY_USAGE_NODE_PATH_FROM_SCENE_ROOT = 1 << 23,
 	PROPERTY_USAGE_RESOURCE_NOT_PERSISTENT = 1 << 24,
 	PROPERTY_USAGE_KEYING_INCREMENTS = 1 << 25, // Used in inspector to increment property when keyed in animation player
+	PROPERTY_USAGE_DEFERRED_SET_RESOURCE = 1 << 26, // when loading, the resource for this property can be set at the end of loading
 
 	PROPERTY_USAGE_DEFAULT = PROPERTY_USAGE_STORAGE | PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_NETWORK,
 	PROPERTY_USAGE_DEFAULT_INTL = PROPERTY_USAGE_STORAGE | PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_NETWORK | PROPERTY_USAGE_INTERNATIONALIZED,
@@ -137,6 +134,7 @@ enum PropertyUsageFlags {
 #define ADD_PROPERTYI(m_property, m_setter, m_getter, m_index) ClassDB::add_property(get_class_static(), m_property, _scs_create(m_setter), _scs_create(m_getter), m_index)
 #define ADD_PROPERTY_DEFAULT(m_property, m_default) ClassDB::set_property_default_value(get_class_static(), m_property, m_default)
 #define ADD_GROUP(m_name, m_prefix) ClassDB::add_property_group(get_class_static(), m_name, m_prefix)
+#define ADD_SUBGROUP(m_name, m_prefix) ClassDB::add_property_subgroup(get_class_static(), m_name, m_prefix)
 
 struct PropertyInfo {
 
@@ -241,7 +239,7 @@ struct MethodInfo {
 //if ( is_type(T::get_class_static()) )
 //return static_cast<T*>(this);
 ////else
-//return NULL;
+//return nullptr;
 
 /*
    the following is an incomprehensible blob of hacks and workarounds to compensate for many of the fallencies in C++. As a plus, this macro pretty much alone defines the object model.
@@ -413,18 +411,15 @@ public:
 
 	struct Connection {
 
-		Object *source;
-		StringName signal;
-		Object *target;
-		StringName method;
+		::Signal signal;
+		Callable callable;
+
 		uint32_t flags;
 		Vector<Variant> binds;
 		bool operator<(const Connection &p_conn) const;
 
 		operator Variant() const;
 		Connection() {
-			source = NULL;
-			target = NULL;
 			flags = 0;
 		}
 		Connection(const Variant &p_variant);
@@ -441,21 +436,7 @@ private:
 	friend bool predelete_handler(Object *);
 	friend void postinitialize_handler(Object *);
 
-	struct Signal {
-
-		struct Target {
-
-			ObjectID _id;
-			StringName method;
-
-			_FORCE_INLINE_ bool operator<(const Target &p_target) const { return (_id == p_target._id) ? (method < p_target.method) : (_id < p_target._id); }
-
-			Target(const ObjectID &p_id, const StringName &p_method) :
-					_id(p_id),
-					method(p_method) {
-			}
-			Target() { _id = ObjectID(); }
-		};
+	struct SignalData {
 
 		struct Slot {
 
@@ -466,11 +447,11 @@ private:
 		};
 
 		MethodInfo user;
-		VMap<Target, Slot> slot_map;
-		Signal() {}
+		VMap<Callable, Slot> slot_map;
+		SignalData() {}
 	};
 
-	HashMap<StringName, Signal> signal_map;
+	HashMap<StringName, SignalData> signal_map;
 	List<Connection> connections;
 #ifdef DEBUG_ENABLED
 	SafeRefCount _lock_index;
@@ -496,7 +477,7 @@ private:
 
 	void _add_user_signal(const String &p_name, const Array &p_args = Array());
 	bool _has_user_signal(const StringName &p_name) const;
-	Variant _emit_signal(const Variant **p_args, int p_argcount, Variant::CallError &r_error);
+	Variant _emit_signal(const Variant **p_args, int p_argcount, Callable::CallError &r_error);
 	Array _get_signal_list() const;
 	Array _get_signal_connection_list(const String &p_signal) const;
 	Array _get_incoming_connections() const;
@@ -554,8 +535,8 @@ protected:
 	//Variant _call_bind(const StringName& p_name, const Variant& p_arg1 = Variant(), const Variant& p_arg2 = Variant(), const Variant& p_arg3 = Variant(), const Variant& p_arg4 = Variant());
 	//void _call_deferred_bind(const StringName& p_name, const Variant& p_arg1 = Variant(), const Variant& p_arg2 = Variant(), const Variant& p_arg3 = Variant(), const Variant& p_arg4 = Variant());
 
-	Variant _call_bind(const Variant **p_args, int p_argcount, Variant::CallError &r_error);
-	Variant _call_deferred_bind(const Variant **p_args, int p_argcount, Variant::CallError &r_error);
+	Variant _call_bind(const Variant **p_args, int p_argcount, Callable::CallError &r_error);
+	Variant _call_deferred_bind(const Variant **p_args, int p_argcount, Callable::CallError &r_error);
 
 	virtual const StringName *_get_class_namev() const {
 		if (!_class_name)
@@ -572,7 +553,7 @@ protected:
 	friend class ClassDB;
 	virtual void _validate_property(PropertyInfo &property) const;
 
-	void _disconnect(const StringName &p_signal, Object *p_to_object, const StringName &p_to_method, bool p_force = false);
+	void _disconnect(const StringName &p_signal, const Callable &p_callable, bool p_force = false);
 
 public: //should be protected, but bug in clang++
 	static void initialize_class();
@@ -607,11 +588,11 @@ public:
 		return dynamic_cast<T *>(p_object);
 #else
 		if (!p_object)
-			return NULL;
+			return nullptr;
 		if (p_object->is_class_ptr(T::get_class_ptr_static()))
 			return static_cast<T *>(p_object);
 		else
-			return NULL;
+			return nullptr;
 #endif
 	}
 
@@ -621,11 +602,11 @@ public:
 		return dynamic_cast<const T *>(p_object);
 #else
 		if (!p_object)
-			return NULL;
+			return nullptr;
 		if (p_object->is_class_ptr(T::get_class_ptr_static()))
 			return static_cast<const T *>(p_object);
 		else
-			return NULL;
+			return nullptr;
 #endif
 	}
 
@@ -660,17 +641,17 @@ public:
 	//void set(const String& p_name, const Variant& p_value);
 	//Variant get(const String& p_name) const;
 
-	void set(const StringName &p_name, const Variant &p_value, bool *r_valid = NULL);
-	Variant get(const StringName &p_name, bool *r_valid = NULL) const;
-	void set_indexed(const Vector<StringName> &p_names, const Variant &p_value, bool *r_valid = NULL);
-	Variant get_indexed(const Vector<StringName> &p_names, bool *r_valid = NULL) const;
+	void set(const StringName &p_name, const Variant &p_value, bool *r_valid = nullptr);
+	Variant get(const StringName &p_name, bool *r_valid = nullptr) const;
+	void set_indexed(const Vector<StringName> &p_names, const Variant &p_value, bool *r_valid = nullptr);
+	Variant get_indexed(const Vector<StringName> &p_names, bool *r_valid = nullptr) const;
 
 	void get_property_list(List<PropertyInfo> *p_list, bool p_reversed = false) const;
 
 	bool has_method(const StringName &p_method) const;
 	void get_method_list(List<MethodInfo> *p_list) const;
 	Variant callv(const StringName &p_method, const Array &p_args);
-	virtual Variant call(const StringName &p_method, const Variant **p_args, int p_argcount, Variant::CallError &r_error);
+	virtual Variant call(const StringName &p_method, const Variant **p_args, int p_argcount, Callable::CallError &r_error);
 	virtual void call_multilevel(const StringName &p_method, const Variant **p_args, int p_argcount);
 	virtual void call_multilevel_reversed(const StringName &p_method, const Variant **p_args, int p_argcount);
 	Variant call(const StringName &p_name, VARIANT_ARG_LIST); // C++ helper
@@ -680,8 +661,8 @@ public:
 	String to_string();
 
 	//used mainly by script, get and set all INCLUDING string
-	virtual Variant getvar(const Variant &p_key, bool *r_valid = NULL) const;
-	virtual void setvar(const Variant &p_key, const Variant &p_value, bool *r_valid = NULL);
+	virtual Variant getvar(const Variant &p_key, bool *r_valid = nullptr) const;
+	virtual void setvar(const Variant &p_key, const Variant &p_value, bool *r_valid = nullptr);
 
 	/* SCRIPT */
 
@@ -710,15 +691,20 @@ public:
 	void add_user_signal(const MethodInfo &p_signal);
 	Error emit_signal(const StringName &p_name, VARIANT_ARG_LIST);
 	Error emit_signal(const StringName &p_name, const Variant **p_args, int p_argcount);
+	bool has_signal(const StringName &p_name) const;
 	void get_signal_list(List<MethodInfo> *p_signals) const;
 	void get_signal_connection_list(const StringName &p_signal, List<Connection> *p_connections) const;
 	void get_all_signal_connections(List<Connection> *p_connections) const;
 	int get_persistent_signal_connection_count() const;
 	void get_signals_connected_to_this(List<Connection> *p_connections) const;
 
-	Error connect(const StringName &p_signal, Object *p_to_object, const StringName &p_to_method, const Vector<Variant> &p_binds = Vector<Variant>(), uint32_t p_flags = 0);
-	void disconnect(const StringName &p_signal, Object *p_to_object, const StringName &p_to_method);
-	bool is_connected(const StringName &p_signal, Object *p_to_object, const StringName &p_to_method) const;
+	Error connect_compat(const StringName &p_signal, Object *p_to_object, const StringName &p_to_method, const Vector<Variant> &p_binds = Vector<Variant>(), uint32_t p_flags = 0);
+	void disconnect_compat(const StringName &p_signal, Object *p_to_object, const StringName &p_to_method);
+	bool is_connected_compat(const StringName &p_signal, Object *p_to_object, const StringName &p_to_method) const;
+
+	Error connect(const StringName &p_signal, const Callable &p_callable, const Vector<Variant> &p_binds = Vector<Variant>(), uint32_t p_flags = 0);
+	void disconnect(const StringName &p_signal, const Callable &p_callable);
+	bool is_connected(const StringName &p_signal, const Callable &p_callable) const;
 
 	void call_deferred(const StringName &p_method, VARIANT_ARG_LIST);
 	void set_deferred(const StringName &p_property, const Variant &p_value);
@@ -726,8 +712,8 @@ public:
 	void set_block_signals(bool p_block);
 	bool is_blocking_signals() const;
 
-	Variant::Type get_static_property_type(const StringName &p_property, bool *r_valid = NULL) const;
-	Variant::Type get_static_property_type_indexed(const Vector<StringName> &p_path, bool *r_valid = NULL) const;
+	Variant::Type get_static_property_type(const StringName &p_property, bool *r_valid = nullptr) const;
+	Variant::Type get_static_property_type_indexed(const Vector<StringName> &p_path, bool *r_valid = nullptr) const;
 
 	virtual void get_translatable_strings(List<String> *p_strings) const;
 
@@ -828,4 +814,4 @@ public:
 //needed by macros
 #include "core/class_db.h"
 
-#endif
+#endif // OBJECT_H

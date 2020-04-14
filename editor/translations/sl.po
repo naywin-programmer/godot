@@ -1561,6 +1561,10 @@ msgstr "Ime"
 msgid "Singleton"
 msgstr "Posameznik"
 
+#: editor/editor_data.cpp editor/inspector_dock.cpp
+msgid "Paste Params"
+msgstr "Prilepi Parametre"
+
 #: editor/editor_data.cpp
 msgid "Updating Scene"
 msgstr "Posodabljanje Scene"
@@ -1867,7 +1871,7 @@ msgstr "Pokaži V Upravitelju Datotek"
 msgid "New Folder..."
 msgstr "Nova Mapa..."
 
-#: editor/editor_file_dialog.cpp
+#: editor/editor_file_dialog.cpp editor/find_in_files.cpp
 #: editor/plugins/version_control_editor_plugin.cpp
 msgid "Refresh"
 msgstr "Osveži"
@@ -4125,16 +4129,17 @@ msgid "Saving..."
 msgstr "Shranjevanje..."
 
 #: editor/import_dock.cpp
+#, fuzzy
+msgid "%d Files"
+msgstr " Datoteke"
+
+#: editor/import_dock.cpp
 msgid "Set as Default for '%s'"
 msgstr "Nastavi kot Privzeto za '%s'"
 
 #: editor/import_dock.cpp
 msgid "Clear Default for '%s'"
 msgstr "Počisti privzeto za '%s'"
-
-#: editor/import_dock.cpp
-msgid " Files"
-msgstr " Datoteke"
 
 #: editor/import_dock.cpp
 msgid "Import As:"
@@ -4184,10 +4189,6 @@ msgstr "Shrani Kot..."
 #: editor/inspector_dock.cpp
 msgid "Copy Params"
 msgstr "Kopiraj Parametre"
-
-#: editor/inspector_dock.cpp
-msgid "Paste Params"
-msgstr "Prilepi Parametre"
 
 #: editor/inspector_dock.cpp
 #, fuzzy
@@ -6232,7 +6233,7 @@ msgstr ""
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 #, fuzzy
-msgid "Create Single Convex Collision Siblings"
+msgid "Create Single Convex Collision Sibling"
 msgstr "Ustvarite Poligon"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
@@ -12665,6 +12666,11 @@ msgstr ""
 msgid ""
 "Plane shapes don't work well and will be removed in future versions. Please "
 "don't use them."
+msgstr ""
+
+#: scene/3d/collision_shape.cpp
+msgid ""
+"ConcavePolygonShape doesn't support RigidBody in another mode than static."
 msgstr ""
 
 #: scene/3d/cpu_particles.cpp

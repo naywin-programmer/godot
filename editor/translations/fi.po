@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Godot Engine editor\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2020-02-02 08:51+0000\n"
+"PO-Revision-Date: 2020-03-14 15:05+0000\n"
 "Last-Translator: Tapani Niemi <tapani.niemi@kapsi.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/godot-engine/"
 "godot/fi/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11-dev\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #: core/math/expression.cpp modules/gdscript/gdscript_functions.cpp
 #: modules/visual_script/visual_script_builtin_funcs.cpp
@@ -687,9 +687,8 @@ msgid "Line Number:"
 msgstr "Rivinumero:"
 
 #: editor/code_editor.cpp
-#, fuzzy
 msgid "%d replaced."
-msgstr "Korvaa..."
+msgstr "%d korvattu."
 
 #: editor/code_editor.cpp editor/editor_help.cpp
 msgid "%d match."
@@ -1490,6 +1489,10 @@ msgstr "Nimi"
 msgid "Singleton"
 msgstr "Singleton"
 
+#: editor/editor_data.cpp editor/inspector_dock.cpp
+msgid "Paste Params"
+msgstr "Liitä parametrit"
+
 #: editor/editor_data.cpp
 msgid "Updating Scene"
 msgstr "Päivitetään skeneä"
@@ -1778,7 +1781,7 @@ msgstr "Näytä tiedostonhallinnassa"
 msgid "New Folder..."
 msgstr "Uusi kansio..."
 
-#: editor/editor_file_dialog.cpp
+#: editor/editor_file_dialog.cpp editor/find_in_files.cpp
 #: editor/plugins/version_control_editor_plugin.cpp
 msgid "Refresh"
 msgstr "Päivitä"
@@ -3949,16 +3952,16 @@ msgid "Saving..."
 msgstr "Tallennetaan..."
 
 #: editor/import_dock.cpp
+msgid "%d Files"
+msgstr "%d tiedostoa"
+
+#: editor/import_dock.cpp
 msgid "Set as Default for '%s'"
 msgstr "Aseta oletus valinnalle '%s'"
 
 #: editor/import_dock.cpp
 msgid "Clear Default for '%s'"
 msgstr "Poista oletus valinnalta '%s'"
-
-#: editor/import_dock.cpp
-msgid " Files"
-msgstr " Tiedostot"
 
 #: editor/import_dock.cpp
 msgid "Import As:"
@@ -4009,10 +4012,6 @@ msgstr "Tallenna nimellä..."
 #: editor/inspector_dock.cpp
 msgid "Copy Params"
 msgstr "Kopioi parametrit"
-
-#: editor/inspector_dock.cpp
-msgid "Paste Params"
-msgstr "Liitä parametrit"
 
 #: editor/inspector_dock.cpp
 msgid "Edit Resource Clipboard"
@@ -5836,9 +5835,8 @@ msgid "Mesh is empty!"
 msgstr "Mesh on tyhjä!"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Couldn't create a Trimesh collision shape."
-msgstr "Luo konkaavi törmäysmuoto sisareksi"
+msgstr "Ei voitu luoda konkaavia törmäysmuotoa."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Create Static Trimesh Body"
@@ -5854,30 +5852,27 @@ msgstr "Luo staattinen konkaavi muoto"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Can't create a single convex collision shape for the scene root."
-msgstr ""
+msgstr "Ei voida luoda yksittäistä konveksia törmäysmuotoa skenen juurelle."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Couldn't create a single convex collision shape."
-msgstr ""
+msgstr "Ei voitu luoda yksittäistä konveksia törmäysmuotoa."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Create Single Convex Shape"
-msgstr "Luo konvekseja muotoja"
+msgstr "Luo yksittäinen konveksi muoto"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Can't create multiple convex collision shapes for the scene root."
-msgstr ""
+msgstr "Ei voi luoda useata konveksia törmäysmuotoa skenen juurelle."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Couldn't create any collision shapes."
-msgstr "Kansiota ei voitu luoda."
+msgstr "Yhtään törmäysmuotoa ei voitu luoda."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Create Multiple Convex Shapes"
-msgstr "Luo konvekseja muotoja"
+msgstr "Luo useita konvekseja muotoja"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Create Navigation Mesh"
@@ -5933,6 +5928,9 @@ msgid ""
 "automatically.\n"
 "This is the most accurate (but slowest) option for collision detection."
 msgstr ""
+"Luo StaticBody solmun ja asettaa sille automaattisesti polygonipohjaisen "
+"törmäysmuodon.\n"
+"Tämä on tarkin (mutta hitain) vaihtoehto törmäystunnistukselle."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Create Trimesh Collision Sibling"
@@ -5943,28 +5941,32 @@ msgid ""
 "Creates a polygon-based collision shape.\n"
 "This is the most accurate (but slowest) option for collision detection."
 msgstr ""
+"Luo polygonipohjaisen törmäysmuodon.\n"
+"Tämä on tarkin (mutta hitain) vaihtoehto törmäystunnistukselle."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
-msgid "Create Single Convex Collision Siblings"
-msgstr "Luo konvekseja törmäysmuotoja sisariksi"
+msgid "Create Single Convex Collision Sibling"
+msgstr "Luo yksittäisen konveksin törmäyksen sisar"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid ""
 "Creates a single convex collision shape.\n"
 "This is the fastest (but least accurate) option for collision detection."
 msgstr ""
+"Luo yksittäisen konveksin törmäysmuodon.\n"
+"Tämä on nopein (mutta epätarkin) vaihtoehto törmäystunnistukselle."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
-#, fuzzy
 msgid "Create Multiple Convex Collision Siblings"
-msgstr "Luo konvekseja törmäysmuotoja sisariksi"
+msgstr "Luo useita konvekseja törmäysmuotojen sisaria"
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid ""
 "Creates a polygon-based collision shape.\n"
 "This is a performance middle-ground between the two above options."
 msgstr ""
+"Luo polygonipohjaisen törmäysmuodon.\n"
+"Tämä on suorituskyvyltään välimaastoa kahdelle yllä olevalle vaihtoehdolle."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "Create Outline Mesh..."
@@ -5977,6 +5979,10 @@ msgid ""
 "This can be used instead of the SpatialMaterial Grow property when using "
 "that property isn't possible."
 msgstr ""
+"Luo staattisen ääriviiva-meshin. Ääriviiva-meshin normaalit on käännetty "
+"automaattisesti.\n"
+"Tätä voidaan käyttää SpatialMaterial Grow ominaisuuden sijaan silloin, kun "
+"tuon ominaisuuden käyttäminen ei ole mahdollista."
 
 #: editor/plugins/mesh_instance_editor_plugin.cpp
 msgid "View UV1"
@@ -9556,21 +9562,18 @@ msgid "Export With Debug"
 msgstr "Vie debugaten"
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid "The path specified doesn't exist."
-msgstr "Polkua ei ole olemassa."
+msgstr "Määritelty polku ei ole olemassa."
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid "Error opening package file (it's not in ZIP format)."
-msgstr "Virhe avattaessa pakettitiedostoa, ei ZIP-muodossa."
+msgstr "Virhe avattaessa pakettitiedostoa (se ei ole ZIP-muodossa)."
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid ""
 "Invalid \".zip\" project file; it doesn't contain a \"project.godot\" file."
 msgstr ""
-"Virheellinen '.zip' projektitiedosto; se ei sisällä 'project.godot' "
+"Virheellinen \".zip\" projektitiedosto; se ei sisällä \"project.godot\" "
 "tiedostoa."
 
 #: editor/project_manager.cpp
@@ -9578,14 +9581,12 @@ msgid "Please choose an empty folder."
 msgstr "Ole hyvä ja valitse tyhjä kansio."
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid "Please choose a \"project.godot\" or \".zip\" file."
-msgstr "Ole hyvä ja valitse 'project.godot' tai '.zip' tiedosto."
+msgstr "Ole hyvä ja valitse \"project.godot\"- tai \".zip\"-tiedosto."
 
 #: editor/project_manager.cpp
-#, fuzzy
 msgid "This directory already contains a Godot project."
-msgstr "Hakemisto sisältää jo Godot-projektin."
+msgstr "Tämä hakemisto sisältää jo Godot-projektin."
 
 #: editor/project_manager.cpp
 msgid "New Game Project"
@@ -10280,9 +10281,8 @@ msgid "Suffix"
 msgstr "Pääte"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "Use Regular Expressions"
-msgstr "Säännölliset lausekkeet"
+msgstr "Käytä säännöllisiä lausekkeita"
 
 #: editor/rename_dialog.cpp
 msgid "Advanced Options"
@@ -10321,7 +10321,6 @@ msgstr ""
 "Vertaa laskurin valintoja."
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "Per-level Counter"
 msgstr "Per taso -laskuri"
 
@@ -10362,14 +10361,12 @@ msgid "Keep"
 msgstr "Pidä"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "PascalCase to snake_case"
-msgstr "CamelCase ala_viivoiksi"
+msgstr "PascalCase ala_viivoiksi"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "snake_case to PascalCase"
-msgstr "ala_viivat CamelCaseksi"
+msgstr "ala_viivat PascalCaseksi"
 
 #: editor/rename_dialog.cpp
 msgid "Case"
@@ -10388,14 +10385,12 @@ msgid "Reset"
 msgstr "Palauta"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "Regular Expression Error"
-msgstr "Säännölliset lausekkeet"
+msgstr "Säännöllisen lausekkeen virhe"
 
 #: editor/rename_dialog.cpp
-#, fuzzy
 msgid "At character %s"
-msgstr "Kelvolliset merkit:"
+msgstr "Merkissä %s"
 
 #: editor/reparent_dialog.cpp editor/scene_tree_dock.cpp
 msgid "Reparent Node"
@@ -10863,9 +10858,8 @@ msgid "Invalid inherited parent name or path."
 msgstr "Virheellinen peritty isännän nimi tai polku."
 
 #: editor/script_create_dialog.cpp
-#, fuzzy
 msgid "Script path/name is valid."
-msgstr "Skripti kelpaa."
+msgstr "Skriptin polku/nimi kelpaa."
 
 #: editor/script_create_dialog.cpp
 msgid "Allowed: a-z, A-Z, 0-9, _ and ."
@@ -10956,7 +10950,6 @@ msgid "Copy Error"
 msgstr "Kopioi virhe"
 
 #: editor/script_editor_debugger.cpp
-#, fuzzy
 msgid "Video RAM"
 msgstr "Näyttömuisti"
 
@@ -12363,6 +12356,12 @@ msgid ""
 msgstr ""
 "Tasomuodot eivät toimi hyvin ja ne tullaan poistaamaan tulevissa versioissa. "
 "Ole hyvä ja älä käytä niitä."
+
+#: scene/3d/collision_shape.cpp
+msgid ""
+"ConcavePolygonShape doesn't support RigidBody in another mode than static."
+msgstr ""
+"ConcavePolygonShape ei tue RigidBody solmua muussa kuin staattisessa tilassa."
 
 #: scene/3d/cpu_particles.cpp
 msgid "Nothing is visible because no mesh has been assigned."

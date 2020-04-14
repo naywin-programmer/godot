@@ -73,7 +73,7 @@ public:
 	ScriptEditorQuickOpen();
 };
 
-class ScriptEditorDebugger;
+class EditorDebuggerNode;
 
 class ScriptEditorBase : public VBoxContainer {
 
@@ -92,7 +92,7 @@ public:
 	virtual void set_edited_resource(const RES &p_res) = 0;
 	virtual void reload_text() = 0;
 	virtual String get_name() = 0;
-	virtual Ref<Texture2D> get_icon() = 0;
+	virtual Ref<Texture2D> get_theme_icon() = 0;
 	virtual bool is_unsaved() = 0;
 	virtual Variant get_edit_state() = 0;
 	virtual void set_edit_state(const Variant &p_state) = 0;
@@ -155,18 +155,10 @@ class ScriptEditor : public PanelContainer {
 		FILE_COPY_PATH,
 		FILE_TOOL_RELOAD,
 		FILE_TOOL_RELOAD_SOFT,
-		DEBUG_NEXT,
-		DEBUG_STEP,
-		DEBUG_BREAK,
-		DEBUG_CONTINUE,
-		DEBUG_SHOW,
-		DEBUG_SHOW_KEEP_OPEN,
-		DEBUG_WITH_EXTERNAL_EDITOR,
 		SEARCH_IN_FILES,
 		REPLACE_IN_FILES,
 		SEARCH_HELP,
 		SEARCH_WEBSITE,
-		REQUEST_DOCS,
 		HELP_SEARCH_FIND,
 		HELP_SEARCH_FIND_NEXT,
 		HELP_SEARCH_FIND_PREVIOUS,
@@ -211,7 +203,6 @@ class ScriptEditor : public PanelContainer {
 
 	Button *help_search;
 	Button *site_search;
-	Button *request_docs;
 	EditorHelpSearch *help_search_dialog;
 
 	ItemList *script_list;
@@ -233,7 +224,6 @@ class ScriptEditor : public PanelContainer {
 	AcceptDialog *error_dialog;
 	ConfirmationDialog *erase_tab_confirm;
 	ScriptCreateDialog *script_create_dialog;
-	ScriptEditorDebugger *debugger;
 	ToolButton *scripts_visible;
 
 	String current_theme;
@@ -315,8 +305,6 @@ class ScriptEditor : public PanelContainer {
 
 	EditorScriptCodeCompletionCache *completion_cache;
 
-	void _editor_play();
-	void _editor_pause();
 	void _editor_stop();
 
 	int edit_pass;
@@ -335,7 +323,6 @@ class ScriptEditor : public PanelContainer {
 	void _set_execution(REF p_script, int p_line);
 	void _clear_execution(REF p_script);
 	void _breaked(bool p_breaked, bool p_can_debug);
-	void _show_debugger(bool p_show);
 	void _update_window_menu();
 	void _script_created(Ref<Script> p_script);
 
@@ -362,7 +349,7 @@ class ScriptEditor : public PanelContainer {
 	void _update_help_overview();
 	void _help_overview_selected(int p_idx);
 
-	void _find_scripts(Node *p_base, Node *p_current, Set<Ref<Script> > &used);
+	void _find_scripts(Node *p_base, Node *p_current, Set<Ref<Script>> &used);
 
 	void _tree_changed();
 
@@ -440,7 +427,7 @@ public:
 	void get_window_layout(Ref<ConfigFile> p_layout);
 
 	void set_scene_root_script(Ref<Script> p_script);
-	Vector<Ref<Script> > get_open_scripts() const;
+	Vector<Ref<Script>> get_open_scripts() const;
 
 	bool script_goto_method(Ref<Script> p_script, const String &p_method);
 
@@ -457,7 +444,6 @@ public:
 
 	VSplitContainer *get_left_list_split() { return list_split; }
 
-	ScriptEditorDebugger *get_debugger() { return debugger; }
 	void set_live_auto_reload_running_scripts(bool p_enabled);
 
 	static void register_create_syntax_highlighter_function(CreateSyntaxHighlighterFunc p_func);
